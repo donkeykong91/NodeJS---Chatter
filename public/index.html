@@ -83,24 +83,34 @@
 
     <script>
 
-      const socket = io();
+      {const socket = io("/tech");
 
-      $("form").submit( function() {
+        $("form").submit( function() {
 
-        socket.emit("message", $("#m").val());
+          socket.emit("message", $("#m").val());
 
-        $("#m").val("");
+          $("#m").val("");
 
-        return false;
+          return false;
 
-      });
+        });
 
 
-      socket.on("message", function (message) {
+        socket.on("connect", function () {
 
-        $("#messages").append($("<li>").text(message));
 
-      });
+          socket.emit("message", "User connected");
+
+
+        });
+
+
+        socket.on("message", function (message) {
+
+          $("#messages").append($("<li>").text(message));
+
+        });
+      }
 
     </script>
 
