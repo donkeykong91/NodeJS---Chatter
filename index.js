@@ -27,14 +27,12 @@ app.get("/", function (request, respond) {
     tech.on("connection", function (socket) {
 
 
-        console.log("user connected");
-
-        socket.on("message", function (message) {
+        socket.on("join", function (data) {
 
 
-            console.log(`message: ${message}`);
+            socket.join(data.room);
 
-            tech.emit("message", message);
+            tech.in(data.room).emit("message", `New user joined ${data.room} room!`);
 
 
         });
