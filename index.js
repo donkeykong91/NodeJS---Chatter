@@ -20,18 +20,36 @@ app.get("/", function (request, respond) {
 
 });
 
-io.on("connection", function (socket) {
+
+{const tech = io.of("/tech");
 
 
-    console.log("User connected");
+    tech.on("connection", function (socket) {
 
-    socket.emit("message", {manny: "Hey how are you?"});
 
-    
-    socket.on("another event", function (data) {
+        console.log("user connected");
 
-        console.log(data);
+        socket.on("message", function (message) {
+
+
+            console.log(`message: ${message}`);
+
+            tech.emit("message", message);
+
+
+        });
+
+
+        socket.on("disconnect", function() {
+
+
+            console.log("User disconnected");
+
+            tech.emit("message", "User disconnected");
+
+
+        });
 
     });
 
-});
+}
