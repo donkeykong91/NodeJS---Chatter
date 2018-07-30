@@ -84,14 +84,21 @@
     <script>
 
       {const socket = io("/tech");
+       
+       const room = "javascript";
 
         $("form").submit( function() {
 
-          socket.emit("message", $("#m").val());
 
-          $("#m").val("");
+          {let message = $("#m").val();
 
-          return false;
+
+            socket.emit("message", { message, room });
+
+            $("#m").val("");
+
+            return false;
+          }
 
         });
 
@@ -99,7 +106,7 @@
         socket.on("connect", function () {
 
 
-          socket.emit("message", "User connected");
+          socket.emit("join", { room: room });
 
 
         });
