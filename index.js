@@ -38,6 +38,17 @@ app.get("/", function (request, respond) {
         });
 
 
+        socket.on("message", function (data) {
+
+
+            console.log(`message: ${data.message}`);
+
+            tech.in(data.room).emit("message", data.message);
+
+
+        });
+
+
         socket.on("disconnect", function() {
 
 
