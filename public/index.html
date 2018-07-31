@@ -13,18 +13,6 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <style>
-    
-      form { padding: 20px; position: fixed; bottom: 0; width: 100%; padding-right: 50px; }
-
-      #messages { list-style-type: none; margin: 0; padding: 0; width: 100%; }
-
-      #messages li { padding: 5px 10px; }
-
-      #messages li:nth-child(odd) { background: #eee; }
-
-    </style>
-
 
   </head>
 
@@ -34,36 +22,17 @@
     <div class="container-fluid">
     
 
-      <div class="row">
-
-        <ul id="messages"></ul>
-
-      </div>
+      <ul class="list-group">
 
 
-      <div class="row">
+        <a href="/javascript" class="list-group-item list-group-item-action">Javascript</a>
 
-        <div class="input-group mb-3">
+        <a href="/swift" class="list-group-item">Swift</a>
 
-          <form action="">
-  
-            <div class="input-group mb-3">
+        <a href="/css" class="list-group-item">CSS</a>
 
-              <input id="m" autocomplete="off" type="text" class="form-control" placeholder="Message" aria-label="Message" aria-describedby="button-addon2">
-
-              <div class="input-group-append">
-
-                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
-
-              </div>
-
-            </div>
-  
-          </form>
-  
-        </div>
-      
-      </div>
+          
+      </ul>
 
 
     </div>
@@ -76,50 +45,6 @@
 
     
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-    <script src="/socket.io/socket.io.js"></script>
-
-
-    <script>
-
-      {const socket = io("/tech");
-       
-       const room = "javascript";
-
-        $("form").submit( function() {
-
-
-          {let message = $("#m").val();
-
-
-            socket.emit("message", { message, room });
-
-            $("#m").val("");
-
-            return false;
-          }
-
-        });
-
-
-        socket.on("connect", function () {
-
-
-          socket.emit("join", { room: room });
-
-
-        });
-
-
-        socket.on("message", function (message) {
-
-          $("#messages").append($("<li>").text(message));
-
-        });
-      }
-
-    </script>
 
 
   </body>
