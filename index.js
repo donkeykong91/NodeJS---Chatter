@@ -21,6 +21,27 @@ app.get("/", function (request, respond) {
 });
 
 
+app.get("/javascript", function (request, respond) {
+
+    respond.sendFile(__dirname + "/public/javascript.html");
+
+});
+
+
+app.get("/swift", function (request, respond) {
+
+    respond.sendFile(__dirname + "/public/swift.html");
+
+});
+
+
+app.get("/css", function (request, respond) {
+
+    respond.sendFile(__dirname + "/public/css.html");
+
+});
+
+
 {const tech = io.of("/tech");
 
 
