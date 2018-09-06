@@ -1,0 +1,30 @@
+{
+  "name": "chatter",
+  "version": "1.0.0",
+  "description": "A chat application using Socket.IO and NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./index.js --exec babel-node -e js",
+    "test": "set DEBUG=* & nodemon ./index.js --exec babel-node -e js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/donkeykong91/NodeJS---Chatter.git"
+  },
+  "author": "Daryl Occ",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/donkeykong91/NodeJS---Chatter/issues"
+  },
+  "homepage": "https://github.com/donkeykong91/NodeJS---Chatter#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "nodemon": "^1.18.3",
+    "socket.io": "^2.1.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
